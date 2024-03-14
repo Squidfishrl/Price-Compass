@@ -1,21 +1,48 @@
-const ctx = document.getElementById('myChart');
+const ctx = document.getElementById('chart');
 
-new Chart(ctx, {
+let priceChart = new Chart(ctx, {
 	type: 'line',
 		data: {
-		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+		labels: ['14.03', '15.03', '16.03', '17.03', '18.03', '19.03', '20.03', '21.03', '22.03', '23.03', '24.03', '25.03'],
 		datasets: [{
-			label: 'Price',
-			data: [12, 19, 3, 5, 2, 3, 5, 6, 7, 8],
+			label: 'Цена',
+			data: [2.08, 2.08, 2.08, 2, 2, 2.10, 2.05, 2.05, 2.05, 2.11],
 			borderWidth: 1,
 			tension: 0.2
 		}]
 	},
 	options: {
+		responsive: true,
 		scales: {
+			// x: {
+			// 	type: 'time'
+			// },
 			y: {
-			beginAtZero: true
+				beginAtZero: true
+			}
+		},
+		plugins: {
+			zoom: {
+				pan: {
+					enabled: true,
+				},
+				limits: {
+					// x: { min: , max:  },
+					y: { min: 0, max: 100, minRange: 0.9 }
+				},
+				zoom: {
+					wheel: {
+						enabled: true
+					},
+					pinch: {
+						enabled: true
+					}
+				}
 			}
 		}
 	}
 });
+
+document.querySelector("#reset-zoom").addEventListener("click", () => {
+	Chart.getChart('chart').resetZoom();
+})
