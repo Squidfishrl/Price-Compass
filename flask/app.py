@@ -1,12 +1,13 @@
 from flask import render_template
-import connexion
+import config
+from models import Product
 
-app = connexion.App(__name__, specification_dir="./")
-app.add_api("./swagger.yml")
+app = config.connex_app
+app.add_api(config.basedir / "./swagger.yml")
 
 @app.route("/")
 def home():
-    return render_template("./templates/test.html")
+    return render_template("./test.html")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)

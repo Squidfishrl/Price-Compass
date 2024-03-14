@@ -14,13 +14,15 @@ components:
       required:
         - EAN
       properties:
+        EAN:
+          type: "string"
         name:
           type: "string"
         brand:
           type: "string"
-        image:
+        category:
           type: "string"
-        EAN:
+        image:
           type: "string"
 
   parameters:
@@ -33,6 +35,34 @@ components:
         type: "string"
 
 paths:
+  /products:
+    get:
+      operationId: "products.read_products"
+      tags:
+        - "Products"
+      summary: "Get all products"
+      responses:
+        "200":
+          description: "Successfully read products"
+    post:
+      operationId: "products.add_product"
+      tags:
+        - "Products"
+      summary: "Add a product"
+      requestBody:
+        description: "Add product info based on its EAN"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "product EAN"
+              type: "object"
+              properties:
+                EAN:
+                  type: "string"
+      responses:
+        "201":
+          description: "Successfully added a product"
   /products/{EAN}:
     get:
       operationId: "products.read_product"
