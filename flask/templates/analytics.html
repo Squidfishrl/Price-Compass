@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Price Compass - Analytics</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/styles.css') }}">
+</head>
+<body>
+	<header>
+		Аналитика
+	</header>
+	<main>
+		<div id="details">
+			<img src="{{ url_for('static', filename='gummies.jpg') }}">
+			<div id="details-text">
+				<p>Name: asdasd</p>
+				<p>Price: 12321</p>
+			</div>
+		</div>
+		<div>
+			<canvas id="myChart"></canvas>
+		</div>
+		<div id="options">
+			<div>
+				<input type="radio" id="option1" name="options">
+				<label for="option1">option1</label>
+			</div>
+			<div>
+				<input type="radio" id="option2" name="options">
+				<label for="option2">option2</label>
+			</div>
+			<div>
+				<input type="radio" id="option3" name="options">
+				<label for="option3">option3</label>
+			</div>
+		</div>
+	</main>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="{{ url_for('static', filename='main_chart.js') }}"></script>
+</body>
+</html>
+  
