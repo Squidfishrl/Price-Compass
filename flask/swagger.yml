@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: "Rest API"
+  description: "Price Compass REST API"
+  version: "1.0.0"
+
+servers:
+  - url: "/api"
+
+components:
+  schemas:
+    Product:
+      type: "object"
+      required:
+        - EAN
+      properties:
+        name:
+          type: "string"
+        brand:
+          type: "string"
+        image:
+          type: "string"
+        EAN:
+          type: "string"
+
+  parameters:
+    EAN:
+      name: "EAN"
+      description: "Unique product id"
+      in: path
+      required: True
+      schema:
+        type: "string"
+
+paths:
+  /products/{EAN}:
+    get:
+      operationId: "products.read_product"
+      tags:
+        - "Products"
+      summary: "Get product information based on its EAN"
+      parameters:
+        - $ref: "#/components/parameters/EAN"
+      responses:
+        "200":
+          description: "Successfully read product"
