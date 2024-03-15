@@ -14,7 +14,7 @@ struct ProductImage: View {
     var body: some View {
         AsyncImage(url: URL(string: imageUrl))
             .frame(width: size, height: size)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .clipShape(RoundedRectangle(cornerRadius: Constants.Size.cornerRadiusMedium))
     }
 }
 

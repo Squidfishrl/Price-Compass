@@ -10,13 +10,13 @@ import CodeScanner
 import AVFoundation
 
 struct AddProductsScreen: View {
-    @Environment(\.dismiss) private var dismiss
     @State private var showErrorAlert = false
     @State private var showScanner = false
-    @State private var products: [ProductModel] = [ProductModel(brand: "brand", name: "name", category: "category", imageUrl: "", prices: [])]
-    @State private var prices: [String] = [""]
+    @State private var products: [ProductModel] = []
+    @State private var prices: [String] = []
     @State private var storeName = ""
     private let productsUploadDate: Date = .now
+    @FocusState private var focusedInputField
 
     var body: some View {
         if [.authorized, .notDetermined].contains(cameraAccess) {
@@ -34,38 +34,52 @@ struct AddProductsScreen: View {
                         ProductListItem(product: products[index])
                         Spacer()
                         TextField("Price", text: $prices[index])
-                            .keyboardType(.numbersAndPunctuation)
+                            .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
-                            .frame(maxWidth: 60)
+                            .frame(maxWidth: Constants.Size.width750)
                             .padding([.horizontal, .vertical], Constants.Spacing.spacing100)
                             .background {
-                                RoundedRectangle(cornerRadius: 10)
+                                RoundedRectangle(cornerRadius: Constants.Size.cornerRadiusMedium)
                                     .stroke()
                                     .foregroundStyle(.secondary)
                             }
+                            .focused($focusedInputField, equals: true)
                     }
                 }
                 .onDelete { indexSet in
                     products.remove(atOffsets: indexSet)
                 }
             }
-            HStack(spacing: Constants.Spacing.spacing500) {
-                TextField("Store", text: $storeName)
-                    .padding([.horizontal, .vertical], Constants.Spacing.spacing100)
-                    .background {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke()
-                            .foregroundStyle(.secondary)
+            if !products.isEmpty {
+                HStack(spacing: Constants.Spacing.spacing500) {
+                    TextField("Store", text: $storeName)
+                        .padding([.horizontal, .vertical], Constants.Spacing.spacing100)
+                        .background {
+                            RoundedRectangle(cornerRadius: Constants.Size.cornerRadiusMedium)
+                                .stroke()
+                                .foregroundStyle(.secondary)
+                        }
+                    ActionButton(text: "Submit") {
+                        // TODO: map prices and call post endpoint
                     }
-                ActionButton(text: "Submit") {
-                    // TODO: map prices and call post endpoint
-                    dismiss()
                 }
+                .padding(.horizontal, Constants.Spacing.spacing300)
             }
-            .padding(.horizontal, Constants.Spacing.spacing300)
         }
         .padding(.bottom, Constants.Spacing.spacing100)
+        .toolbar(products.isEmpty ? .visible : .hidden, for: .tabBar)
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Cancel") {
+                    Task {
+                        focusedInputField = false
+                        try? await Task.sleep(for: .milliseconds(100))
+                        reset()
+                    }
+                }
+                .opacity(products.isEmpty ? 0 : 1)
+                .disabled(products.isEmpty)
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
                     showScanner = true
@@ -74,6 +88,7 @@ struct AddProductsScreen: View {
                 }
             }
         }
+        .animation(.easeInOut, value: products.isEmpty)
         .sheet(isPresented: $showScanner) {
             CodeScannerView(codeTypes: [.ean13, .qr]) { result in
                 if case let .success(success) = result {
@@ -109,6 +124,11 @@ struct AddProductsScreen: View {
 
     private func product(from ean: String) -> ProductModel {
         ProductModel(brand: "", name: "", category: "", imageUrl: "", prices: [])
+    }
+
+    private func reset() {
+        products = []
+        prices = []
     }
 }
 

@@ -17,6 +17,9 @@ enum Constants {
 
     enum Size {
         static let cornerRadiusSmall = 8.0
+        static let cornerRadiusMedium = 10.0
         static let cornerRadiusLarge = 20.0
+
+        static let width750 = 60.0
     }
 }
