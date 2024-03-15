@@ -14,7 +14,7 @@ struct PriceCompassApp: App {
     var body: some Scene {
         WindowGroup {
             TabView(selection: $selectedTab) {
-                HomeScreen(products: .constant([]))
+                HomeScreen()
                     .navigationStackRoot()
                     .tabViewDestination(.home)
                 AddProductsScreen()
