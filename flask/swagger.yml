@@ -14,14 +14,45 @@ components:
       required:
         - EAN
       properties:
+        EAN:
+          type: "string"
         name:
           type: "string"
         brand:
           type: "string"
+        category:
+          type: "string"
         image:
           type: "string"
-        EAN:
+        size:
           type: "string"
+    Store:
+      type: "object"
+      required:
+        - id
+      properties:
+        id:
+          type: "integer"
+        name:
+          type: "string"
+        location:
+          type: "string"
+    Price:
+      type: "object"
+      required:
+        - product_EAN
+        - store_name
+        - date
+      properties:
+        product_EAN:
+          type: "string"
+        store_name:
+          type: "string"
+        price:
+          type: "number"
+        date:
+          type: "string"
+          format: "date-time"
 
   parameters:
     EAN:
@@ -31,11 +62,46 @@ components:
       required: True
       schema:
         type: "string"
+    name:
+      name: "name"
+      description: "The name of a product. Is unique."
+      in: path
+      required: True
+      schema:
+        type: "string"
 
 paths:
+  /products:
+    get:
+      operationId: "endpoints.products.get_all"
+      tags:
+        - "Products"
+      summary: "Get all products"
+      responses:
+        "200":
+          description: "Successfully read products"
+    post:
+      operationId: "endpoints.products.add_product"
+      tags:
+        - "Products"
+      summary: "Add a product"
+      requestBody:
+        description: "Add product info based on its EAN"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "Product EAN"
+              type: "object"
+              properties:
+                EAN:
+                  type: "string"
+      responses:
+        "201":
+          description: "Successfully added a product"
   /products/{EAN}:
     get:
-      operationId: "products.read_product"
+      operationId: "endpoints.products.get_by_EAN"
       tags:
         - "Products"
       summary: "Get product information based on its EAN"
@@ -44,3 +110,71 @@ paths:
       responses:
         "200":
           description: "Successfully read product"
+  /product/{name}:
+    get:
+      operationId: "endpoints.products.get_by_name"
+      tags:
+        - "Products"
+      summary: "Get product information by its name"
+      parameters:
+        - $ref: "#/components/parameters/name"
+      responses:
+        "200":
+          description: "Successfully found product"
+  /stores:
+    get:
+      operationId: "endpoints.stores.get_all"
+      tags:
+        - "Stores"
+      summary: "Get all registered stores"
+      responses:
+        "200":
+          description: "Successfully read stores"
+  /store:
+    post:
+      operationId: "endpoints.stores.add_store"
+      tags:
+        - "Stores"
+      summary: "Add a store"
+      requestBody:
+        description: "Add product info based on its name"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "Store name"
+              type: "object"
+              properties:
+                name:
+                  type: "string"
+      responses:
+        "201":
+          description: "Successfully added a store"
+  /prices:
+    get:
+      operationId: "endpoints.prices.get_all"
+      tags:
+        - "Prices"
+      summary: "Get all price entries"
+      responses:
+        "200":
+          description: "Successfully read price entries"
+  /price:
+    post:
+      operationId: "endpoints.prices.add_price"
+      tags:
+        - "Prices"
+      summary: "Add a price entry"
+      requestBody:
+        description: "Add price entry"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "Store name"
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Price"
+      responses:
+        "201":
+          description: "Successfully added a store"
