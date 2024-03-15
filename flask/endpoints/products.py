@@ -2,16 +2,25 @@ from flask import jsonify, abort, request
 from config import db
 from models.product import Product, product_schema, products_schema
 from models.price import Price
+from sqlalchemy import select
+
+class ProductPrices():
+    pass
 
 def get_all():
     products = Product.query.all()
-    return jsonify(products_schema.dump(products))
 
     for product in products:
-        product_price_info = product.query\
-            .join(Price, product.EAN == Price.productEAN)\
-            .add_columns(product.EAN, Price.storeId, Price.price, Price.date)
-    
+        result = db.session.execute(select(Price.store_name, Price.price, Price.date)\
+                .where(Price.product_EAN == product.EAN))
+
+        store_names = {}
+        for res in result.all():
+            if store_names.get(res[0]) is None:
+                store
+
+
+    return jsonify(products_schema.dump(products))
 
 def get_by_EAN(EAN):
     product = Product.query.filter(Product.EAN == EAN).one_or_none()

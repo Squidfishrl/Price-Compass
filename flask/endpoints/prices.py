@@ -2,7 +2,6 @@ from datetime import datetime
 from flask import jsonify, abort, request
 from config import db
 from models.price import Price, price_schema, prices_schema
-from models.product import Product
 from models.store import Store
 
 def get_all():
