@@ -32,11 +32,11 @@ def get_all():
 
             stores[store_names].append({"price" : res[1], "date" : str(res[2])})
 
-            product_info = ProductPrices(ean13=product.EAN, brand=product.brand,
-                          name=product.name, category=product.category,
-                          imageUrl=product.image_url, stores=stores)
+        product_info = ProductPrices(ean13=product.EAN, brand=product.brand,
+            name=product.name, category=product.category,
+            imageUrl=product.image_url, stores=stores)
 
-            product_infos.append(product_info.__dict__)
+        product_infos.append(product_info.__dict__)
 
     return Response(json.dumps(product_infos),  mimetype='application/json')
 
@@ -46,7 +46,22 @@ def get_by_EAN(EAN: str):
     if product is None:
         abort(404, f"Product with EAN '{EAN}' not found.")
 
-    return jsonify(product_schema.dump(product))
+    result = db.session.execute(select(Price.store_name, Price.price, Price.date)\
+                       .where(Price.product_EAN == product.EAN))
+
+    stores = {}
+    for res in result.all():
+        store_names = res[0]
+        if stores.get(store_names) is None:
+            stores[store_names] = []
+
+        stores[store_names].append({"price" : res[1], "date" : str(res[2])})
+
+    product_info = ProductPrices(ean13=product.EAN, brand=product.brand,
+                                 name=product.name, category=product.category,
+                                 imageUrl=product.image_url, stores=stores)
+
+    return Response(json.dumps(product_info.__dict__),  mimetype='application/json')
 
 def get_by_name(name: str):
     product = Product.query.filter(Product.name == name).one_or_none()

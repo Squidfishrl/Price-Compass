@@ -99,7 +99,7 @@ paths:
       responses:
         "201":
           description: "Successfully added a product"
-  /product/{EAN}:
+  /products/{EAN}:
     get:
       operationId: "endpoints.products.get_by_EAN"
       tags:
@@ -172,7 +172,9 @@ paths:
           application/json:
             schema:
               x-body-name: "Store name"
-              $ref: "#/components/schemas/Price"
+              type: "array"
+              items:
+                $ref: "#/components/schemas/Price"
       responses:
         "201":
           description: "Successfully added a store"
