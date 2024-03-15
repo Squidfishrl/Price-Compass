@@ -14,13 +14,17 @@ components:
       required:
         - EAN
       properties:
+        EAN:
+          type: "string"
         name:
           type: "string"
         brand:
           type: "string"
+        category:
+          type: "string"
         image:
           type: "string"
-        EAN:
+        size:
           type: "string"
 
   parameters:
@@ -31,11 +35,46 @@ components:
       required: True
       schema:
         type: "string"
+    name:
+      name: "name"
+      description: "The name of a product. Is unique."
+      in: path
+      required: True
+      schema:
+        type: "string"
 
 paths:
+  /products:
+    get:
+      operationId: "products.get_all"
+      tags:
+        - "Products"
+      summary: "Get all products"
+      responses:
+        "200":
+          description: "Successfully read products"
+    post:
+      operationId: "products.add_product"
+      tags:
+        - "Products"
+      summary: "Add a product"
+      requestBody:
+        description: "Add product info based on its EAN"
+        required: True
+        content:
+          application/json:
+            schema:
+              x-body-name: "product EAN"
+              type: "object"
+              properties:
+                EAN:
+                  type: "string"
+      responses:
+        "201":
+          description: "Successfully added a product"
   /products/{EAN}:
     get:
-      operationId: "products.read_product"
+      operationId: "products.get_by_EAN"
       tags:
         - "Products"
       summary: "Get product information based on its EAN"
@@ -44,3 +83,14 @@ paths:
       responses:
         "200":
           description: "Successfully read product"
+  /products/{name}:
+    get:
+      operationId: "products.get_by_name"
+      tags:
+        - "Products"
+      summary: "Get product information by its name"
+      parameters:
+        - $ref: "#/components/parameters/name"
+      responses:
+        "200":
+          description: "Successfully found product"

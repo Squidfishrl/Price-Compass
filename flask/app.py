@@ -1,9 +1,11 @@
+import config
+
 from flask import render_template, url_for
-import connexion
+from dotenv import load_dotenv
 import json
 
-app = connexion.App(__name__, specification_dir="./")
-app.add_api("./swagger.yml")
+app = config.connex_app
+app.add_api(config.basedir / "./swagger.yml")
 
 # this will be fetched from the backend
 product1_json = '''{
@@ -41,4 +43,5 @@ def home():
     return render_template("./analytics.html", product=product1)
 
 if __name__ == "__main__":
+    load_dotenv()
     app.run(host="0.0.0.0", port=8000)
