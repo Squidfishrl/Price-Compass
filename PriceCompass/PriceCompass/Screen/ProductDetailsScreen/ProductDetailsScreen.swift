@@ -66,7 +66,8 @@ struct ProductDetailsScreen: View {
 
 #Preview {
     NavigationStack {
-        ProductDetailsScreen(product: ProductModel(brand: "Brand",
+        ProductDetailsScreen(product: ProductModel(id: "id",
+                                                   brand: "Brand",
                                                    name: "Name",
                                                    category: "Category",
                                                    imageUrl: "",

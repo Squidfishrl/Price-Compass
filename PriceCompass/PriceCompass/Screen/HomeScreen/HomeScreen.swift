@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeScreen: View {
+    @EnvironmentObject private var productsRepository: ProductsManager
     @State private var searchQuery = ""
     @Binding private(set) var products: [ProductModel]
 
@@ -20,6 +21,9 @@ struct HomeScreen: View {
             }
         }
         .searchable(text: $searchQuery)
+        .task {
+            products = (try? await productsRepository.getProducts()) ?? []
+        }
     }
 }
 

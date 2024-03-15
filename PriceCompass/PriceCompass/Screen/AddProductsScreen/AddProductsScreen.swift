@@ -10,6 +10,7 @@ import CodeScanner
 import AVFoundation
 
 struct AddProductsScreen: View {
+    @EnvironmentObject private var productsRepository: ProductsManager
     @State private var showErrorAlert = false
     @State private var showScanner = false
     @State private var products: [ProductModel] = []
@@ -60,7 +61,12 @@ struct AddProductsScreen: View {
                                 .foregroundStyle(.secondary)
                         }
                     ActionButton(text: "Submit") {
-                        // TODO: map prices and call post endpoint
+                        for index in products.indices {
+                            products[index].prices.append(ProductPrice(store: storeName,
+                                                                       price: Double(prices[index]) ?? -1,
+                                                                       date: productsUploadDate))
+                        }
+                        try await productsRepository.save(products: products)
                     }
                 }
                 .padding(.horizontal, Constants.Spacing.spacing300)
@@ -92,8 +98,10 @@ struct AddProductsScreen: View {
         .sheet(isPresented: $showScanner) {
             CodeScannerView(codeTypes: [.ean13, .qr]) { result in
                 if case let .success(success) = result {
-                    products.append(product(from: success.string))
-                    prices.append("0")
+                    Task {
+                        try await products.append(product(from: success.string))
+                        prices.append("0")
+                    }
                 } else {
                     showErrorAlert = true
                 }
@@ -122,8 +130,8 @@ struct AddProductsScreen: View {
         AVCaptureDevice.authorizationStatus(for: .video)
     }
 
-    private func product(from ean: String) -> ProductModel {
-        ProductModel(brand: "", name: "", category: "", imageUrl: "", prices: [])
+    private func product(from ean: String) async throws -> ProductModel {
+        try await productsRepository.getProduct(with: ean)
     }
 
     private func reset() {

@@ -21,6 +21,7 @@ struct PriceCompassApp: App {
                     .navigationStackRoot()
                     .tabViewDestination(.addProducts)
             }
+            .environmentObject(ProductsManager())
         }
     }
 }

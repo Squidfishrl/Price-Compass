@@ -28,7 +28,8 @@ struct ProductListItem: View {
 }
 
 #Preview {
-    ProductListItem(product: ProductModel(brand: "Brand",
+    ProductListItem(product: ProductModel(id: "id",
+                                          brand: "Brand",
                                           name: "Name",
                                           category: "Category",
                                           imageUrl: "",
