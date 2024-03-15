@@ -1,0 +1,647 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5964E1462BA316BA001DDE97 /* PriceCompassApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E1452BA316BA001DDE97 /* PriceCompassApp.swift */; };
+		5964E1482BA316BA001DDE97 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E1472BA316BA001DDE97 /* HomeScreen.swift */; };
+		5964E14A2BA316BE001DDE97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5964E1492BA316BE001DDE97 /* Assets.xcassets */; };
+		5964E14D2BA316BE001DDE97 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5964E14C2BA316BE001DDE97 /* Preview Assets.xcassets */; };
+		5964E1572BA316BF001DDE97 /* PriceCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E1562BA316BF001DDE97 /* PriceCompassTests.swift */; };
+		5964E1702BA32477001DDE97 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E16F2BA32477001DDE97 /* ProductModel.swift */; };
+		5964E1722BA3268B001DDE97 /* ProductListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E1712BA3268B001DDE97 /* ProductListItem.swift */; };
+		5964E1742BA32BF4001DDE97 /* ProductDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E1732BA32BF4001DDE97 /* ProductDto.swift */; };
+		5964E1762BA33524001DDE97 /* AddProductsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E1752BA33524001DDE97 /* AddProductsScreen.swift */; };
+		5964E1792BA34F23001DDE97 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5964E1782BA34F23001DDE97 /* CodeScanner */; };
+		5964E17B2BA35EC9001DDE97 /* NavigationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E17A2BA35EC9001DDE97 /* NavigationRoute.swift */; };
+		5964E17E2BA35EE6001DDE97 /* NavigationTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E17C2BA35EE6001DDE97 /* NavigationTab.swift */; };
+		5964E17F2BA35EE6001DDE97 /* NavigationRoute+Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E17D2BA35EE6001DDE97 /* NavigationRoute+Destination.swift */; };
+		5964E1822BA35FE8001DDE97 /* TabViewDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E1802BA35FE7001DDE97 /* TabViewDestination.swift */; };
+		5964E1832BA35FE8001DDE97 /* NavigationStackRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E1812BA35FE7001DDE97 /* NavigationStackRoot.swift */; };
+		5964E1852BA43DF7001DDE97 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5964E1842BA43DF7001DDE97 /* WebView.swift */; };
+		59F63B572BA4489F00771547 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F63B562BA4489F00771547 /* ProductsRepository.swift */; };
+		59F63B5D2BA44A5C00771547 /* ProductDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F63B5C2BA44A5C00771547 /* ProductDetailsScreen.swift */; };
+		59F63B5F2BA44D5800771547 /* ProductImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F63B5E2BA44D5800771547 /* ProductImage.swift */; };
+		59F63B612BA47B1F00771547 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F63B602BA47B1F00771547 /* ActionButton.swift */; };
+		59F63B642BA48AD100771547 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F63B632BA48AD000771547 /* Constants.swift */; };
+		59F63B672BA4B08200771547 /* ProductsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F63B662BA4B08200771547 /* ProductsProvider.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5964E1532BA316BF001DDE97 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5964E13A2BA316BA001DDE97 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5964E1412BA316BA001DDE97;
+			remoteInfo = PriceCompass;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5964E1422BA316BA001DDE97 /* PriceCompass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PriceCompass.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5964E1452BA316BA001DDE97 /* PriceCompassApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCompassApp.swift; sourceTree = "<group>"; };
+		5964E1472BA316BA001DDE97 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		5964E1492BA316BE001DDE97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5964E14C2BA316BE001DDE97 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5964E1522BA316BF001DDE97 /* PriceCompassTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PriceCompassTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5964E1562BA316BF001DDE97 /* PriceCompassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCompassTests.swift; sourceTree = "<group>"; };
+		5964E16F2BA32477001DDE97 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		5964E1712BA3268B001DDE97 /* ProductListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListItem.swift; sourceTree = "<group>"; };
+		5964E1732BA32BF4001DDE97 /* ProductDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDto.swift; sourceTree = "<group>"; };
+		5964E1752BA33524001DDE97 /* AddProductsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductsScreen.swift; sourceTree = "<group>"; };
+		5964E17A2BA35EC9001DDE97 /* NavigationRoute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationRoute.swift; sourceTree = "<group>"; };
+		5964E17C2BA35EE6001DDE97 /* NavigationTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationTab.swift; sourceTree = "<group>"; };
+		5964E17D2BA35EE6001DDE97 /* NavigationRoute+Destination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NavigationRoute+Destination.swift"; sourceTree = "<group>"; };
+		5964E1802BA35FE7001DDE97 /* TabViewDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabViewDestination.swift; sourceTree = "<group>"; };
+		5964E1812BA35FE7001DDE97 /* NavigationStackRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationStackRoot.swift; sourceTree = "<group>"; };
+		5964E1842BA43DF7001DDE97 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		59F63B562BA4489F00771547 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
+		59F63B5C2BA44A5C00771547 /* ProductDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsScreen.swift; sourceTree = "<group>"; };
+		59F63B5E2BA44D5800771547 /* ProductImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImage.swift; sourceTree = "<group>"; };
+		59F63B602BA47B1F00771547 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		59F63B632BA48AD000771547 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		59F63B662BA4B08200771547 /* ProductsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsProvider.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5964E13F2BA316BA001DDE97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5964E1792BA34F23001DDE97 /* CodeScanner in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5964E14F2BA316BF001DDE97 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5964E1392BA316BA001DDE97 = {
+			isa = PBXGroup;
+			children = (
+				5964E1442BA316BA001DDE97 /* PriceCompass */,
+				5964E1552BA316BF001DDE97 /* PriceCompassTests */,
+				5964E1432BA316BA001DDE97 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5964E1432BA316BA001DDE97 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5964E1422BA316BA001DDE97 /* PriceCompass.app */,
+				5964E1522BA316BF001DDE97 /* PriceCompassTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5964E1442BA316BA001DDE97 /* PriceCompass */ = {
+			isa = PBXGroup;
+			children = (
+				59F63B622BA48AC400771547 /* Config */,
+				59F63B652BA4B06E00771547 /* DataProvider */,
+				59F63B582BA448E600771547 /* Model */,
+				5964E1872BA44149001DDE97 /* Navigation */,
+				59F63B542BA447C900771547 /* Repository */,
+				5964E1862BA44142001DDE97 /* Screen */,
+				5964E18A2BA44344001DDE97 /* View */,
+				5964E1452BA316BA001DDE97 /* PriceCompassApp.swift */,
+				5964E1492BA316BE001DDE97 /* Assets.xcassets */,
+				5964E14B2BA316BE001DDE97 /* Preview Content */,
+			);
+			path = PriceCompass;
+			sourceTree = "<group>";
+		};
+		5964E14B2BA316BE001DDE97 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5964E14C2BA316BE001DDE97 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5964E1552BA316BF001DDE97 /* PriceCompassTests */ = {
+			isa = PBXGroup;
+			children = (
+				5964E1562BA316BF001DDE97 /* PriceCompassTests.swift */,
+			);
+			path = PriceCompassTests;
+			sourceTree = "<group>";
+		};
+		5964E1862BA44142001DDE97 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				5964E1892BA44331001DDE97 /* AddProductsScreen */,
+				5964E1882BA44173001DDE97 /* HomeScreen */,
+				59F63B592BA44A3E00771547 /* ProductDetailsScreen */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		5964E1872BA44149001DDE97 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				5964E17A2BA35EC9001DDE97 /* NavigationRoute.swift */,
+				5964E17D2BA35EE6001DDE97 /* NavigationRoute+Destination.swift */,
+				5964E1812BA35FE7001DDE97 /* NavigationStackRoot.swift */,
+				5964E17C2BA35EE6001DDE97 /* NavigationTab.swift */,
+				5964E1802BA35FE7001DDE97 /* TabViewDestination.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		5964E1882BA44173001DDE97 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5964E1472BA316BA001DDE97 /* HomeScreen.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		5964E1892BA44331001DDE97 /* AddProductsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5964E1752BA33524001DDE97 /* AddProductsScreen.swift */,
+			);
+			path = AddProductsScreen;
+			sourceTree = "<group>";
+		};
+		5964E18A2BA44344001DDE97 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59F63B602BA47B1F00771547 /* ActionButton.swift */,
+				59F63B5E2BA44D5800771547 /* ProductImage.swift */,
+				5964E1712BA3268B001DDE97 /* ProductListItem.swift */,
+				5964E1842BA43DF7001DDE97 /* WebView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		59F63B542BA447C900771547 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				59F63B562BA4489F00771547 /* ProductsRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		59F63B582BA448E600771547 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5964E16F2BA32477001DDE97 /* ProductModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		59F63B592BA44A3E00771547 /* ProductDetailsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				59F63B5C2BA44A5C00771547 /* ProductDetailsScreen.swift */,
+			);
+			path = ProductDetailsScreen;
+			sourceTree = "<group>";
+		};
+		59F63B622BA48AC400771547 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				59F63B632BA48AD000771547 /* Constants.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		59F63B652BA4B06E00771547 /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				5964E1732BA32BF4001DDE97 /* ProductDto.swift */,
+				59F63B662BA4B08200771547 /* ProductsProvider.swift */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5964E1412BA316BA001DDE97 /* PriceCompass */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5964E1662BA316BF001DDE97 /* Build configuration list for PBXNativeTarget "PriceCompass" */;
+			buildPhases = (
+				5964E13E2BA316BA001DDE97 /* Sources */,
+				5964E13F2BA316BA001DDE97 /* Frameworks */,
+				5964E1402BA316BA001DDE97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PriceCompass;
+			packageProductDependencies = (
+				5964E1782BA34F23001DDE97 /* CodeScanner */,
+			);
+			productName = PriceCompass;
+			productReference = 5964E1422BA316BA001DDE97 /* PriceCompass.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5964E1512BA316BF001DDE97 /* PriceCompassTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5964E1692BA316BF001DDE97 /* Build configuration list for PBXNativeTarget "PriceCompassTests" */;
+			buildPhases = (
+				5964E14E2BA316BF001DDE97 /* Sources */,
+				5964E14F2BA316BF001DDE97 /* Frameworks */,
+				5964E1502BA316BF001DDE97 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5964E1542BA316BF001DDE97 /* PBXTargetDependency */,
+			);
+			name = PriceCompassTests;
+			productName = PriceCompassTests;
+			productReference = 5964E1522BA316BF001DDE97 /* PriceCompassTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5964E13A2BA316BA001DDE97 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					5964E1412BA316BA001DDE97 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					5964E1512BA316BF001DDE97 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = 5964E1412BA316BA001DDE97;
+					};
+				};
+			};
+			buildConfigurationList = 5964E13D2BA316BA001DDE97 /* Build configuration list for PBXProject "PriceCompass" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5964E1392BA316BA001DDE97;
+			packageReferences = (
+				5964E1772BA34F23001DDE97 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
+			productRefGroup = 5964E1432BA316BA001DDE97 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5964E1412BA316BA001DDE97 /* PriceCompass */,
+				5964E1512BA316BF001DDE97 /* PriceCompassTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5964E1402BA316BA001DDE97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5964E14D2BA316BE001DDE97 /* Preview Assets.xcassets in Resources */,
+				5964E14A2BA316BE001DDE97 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5964E1502BA316BF001DDE97 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5964E13E2BA316BA001DDE97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5964E1722BA3268B001DDE97 /* ProductListItem.swift in Sources */,
+				59F63B642BA48AD100771547 /* Constants.swift in Sources */,
+				5964E1822BA35FE8001DDE97 /* TabViewDestination.swift in Sources */,
+				59F63B5F2BA44D5800771547 /* ProductImage.swift in Sources */,
+				5964E1832BA35FE8001DDE97 /* NavigationStackRoot.swift in Sources */,
+				5964E17B2BA35EC9001DDE97 /* NavigationRoute.swift in Sources */,
+				5964E1482BA316BA001DDE97 /* HomeScreen.swift in Sources */,
+				5964E17F2BA35EE6001DDE97 /* NavigationRoute+Destination.swift in Sources */,
+				59F63B612BA47B1F00771547 /* ActionButton.swift in Sources */,
+				59F63B5D2BA44A5C00771547 /* ProductDetailsScreen.swift in Sources */,
+				5964E1702BA32477001DDE97 /* ProductModel.swift in Sources */,
+				5964E1742BA32BF4001DDE97 /* ProductDto.swift in Sources */,
+				59F63B572BA4489F00771547 /* ProductsRepository.swift in Sources */,
+				5964E17E2BA35EE6001DDE97 /* NavigationTab.swift in Sources */,
+				59F63B672BA4B08200771547 /* ProductsProvider.swift in Sources */,
+				5964E1852BA43DF7001DDE97 /* WebView.swift in Sources */,
+				5964E1462BA316BA001DDE97 /* PriceCompassApp.swift in Sources */,
+				5964E1762BA33524001DDE97 /* AddProductsScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5964E14E2BA316BF001DDE97 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5964E1572BA316BF001DDE97 /* PriceCompassTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5964E1542BA316BF001DDE97 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5964E1412BA316BA001DDE97 /* PriceCompass */;
+			targetProxy = 5964E1532BA316BF001DDE97 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5964E1642BA316BF001DDE97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5964E1652BA316BF001DDE97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5964E1672BA316BF001DDE97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PriceCompass/Preview Content\"";
+				DEVELOPMENT_TEAM = UJ4N2GPGC6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use the camera to scan the items' barcodes and add them in the app";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PriceCompass;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5964E1682BA316BF001DDE97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PriceCompass/Preview Content\"";
+				DEVELOPMENT_TEAM = UJ4N2GPGC6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Use the camera to scan the items' barcodes and add them in the app";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PriceCompass;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5964E16A2BA316BF001DDE97 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PriceCompassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PriceCompass.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PriceCompass";
+			};
+			name = Debug;
+		};
+		5964E16B2BA316BF001DDE97 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PriceCompassTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PriceCompass.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PriceCompass";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5964E13D2BA316BA001DDE97 /* Build configuration list for PBXProject "PriceCompass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5964E1642BA316BF001DDE97 /* Debug */,
+				5964E1652BA316BF001DDE97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5964E1662BA316BF001DDE97 /* Build configuration list for PBXNativeTarget "PriceCompass" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5964E1672BA316BF001DDE97 /* Debug */,
+				5964E1682BA316BF001DDE97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5964E1692BA316BF001DDE97 /* Build configuration list for PBXNativeTarget "PriceCompassTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5964E16A2BA316BF001DDE97 /* Debug */,
+				5964E16B2BA316BF001DDE97 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5964E1772BA34F23001DDE97 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5964E1782BA34F23001DDE97 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5964E1772BA34F23001DDE97 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5964E13A2BA316BA001DDE97 /* Project object */;
+}
