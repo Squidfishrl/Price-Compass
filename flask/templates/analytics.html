@@ -11,14 +11,16 @@
 <body>
 	<header>
 		<div id="title">
-			Аналитика
+			Статистика
 		</div>
 	</header>
 	<main>
 		<div id="details">
-			<img src="{{ url_for('static', filename='gummies.jpg') }}">
+			<img src="{{ product.imageUrl }}">
 			<div id="details-text">
-				<p><span id="product-name-label">Име на артикул:</span> {{ product.name }}</p>
+				<p><span id="product-name-label">Артикул:</span> {{ product.name }}</p>
+				<p><span id="product-name-label">Производител:</span> {{ product.brand }}</p>
+				<p><span id="product-name-label">Категория:</span> {{ product.category }}</p>
 				<p><span id="product-price-label">Текуща цена:</span> {{ product.stores["Lidl"][0].price }} лв.</p>
 			</div>
 		</div>
