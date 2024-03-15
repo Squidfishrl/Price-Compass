@@ -14,9 +14,9 @@ struct ProductDetailsScreen: View {
         VStack {
             List {
                 Section {
-                    HStack(spacing: 16) {
+                    HStack(spacing: Constants.Spacing.spacing200) {
                         ProductImage(imageUrl: product.imageUrl, size: 120)
-                        VStack(alignment: .leading, spacing: 8) {
+                        VStack(alignment: .leading, spacing: Constants.Spacing.spacing100) {
                             Text("Brand: \(product.brand)")
                                 .font(.title2)
                             Text("Category: \(product.category)")
@@ -57,7 +57,7 @@ struct ProductDetailsScreen: View {
                         Spacer()
                         Text(String(format: "%.2f", details.price))
                     }
-                    .padding(.trailing, 8)
+                    .padding(.trailing, Constants.Spacing.spacing100)
                 }
             }
         }

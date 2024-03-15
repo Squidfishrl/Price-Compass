@@ -29,15 +29,15 @@ struct ActionButton: View {
                     .opacity(loading ? 0 : 1)
             }
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 40)
+        .padding(.vertical, Constants.Spacing.spacing100)
+        .padding(.horizontal, Constants.Spacing.spacing500)
         .bold()
         .foregroundStyle(.white)
         .background(.blue)
-        .clipShape(UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: 20,
-                                                                            bottomLeading: 8,
-                                                                            bottomTrailing: 20,
-                                                                            topTrailing: 8)))
+        .clipShape(UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: Constants.Size.cornerRadiusLarge,
+                                                                            bottomLeading: Constants.Size.cornerRadiusSmall,
+                                                                            bottomTrailing: Constants.Size.cornerRadiusLarge,
+                                                                            topTrailing: Constants.Size.cornerRadiusSmall)))
     }
 }
 

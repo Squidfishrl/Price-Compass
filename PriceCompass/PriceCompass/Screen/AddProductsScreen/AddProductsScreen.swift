@@ -37,7 +37,7 @@ struct AddProductsScreen: View {
                             .keyboardType(.numbersAndPunctuation)
                             .multilineTextAlignment(.trailing)
                             .frame(maxWidth: 60)
-                            .padding([.horizontal, .vertical], 8)
+                            .padding([.horizontal, .vertical], Constants.Spacing.spacing100)
                             .background {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke()
@@ -49,9 +49,9 @@ struct AddProductsScreen: View {
                     products.remove(atOffsets: indexSet)
                 }
             }
-            HStack(spacing: 40) {
+            HStack(spacing: Constants.Spacing.spacing500) {
                 TextField("Store", text: $storeName)
-                    .padding([.horizontal, .vertical], 8)
+                    .padding([.horizontal, .vertical], Constants.Spacing.spacing100)
                     .background {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke()
@@ -62,9 +62,9 @@ struct AddProductsScreen: View {
                     dismiss()
                 }
             }
-            .padding(.horizontal, 24)
+            .padding(.horizontal, Constants.Spacing.spacing300)
         }
-        .padding(.bottom, 8)
+        .padding(.bottom, Constants.Spacing.spacing100)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -92,7 +92,7 @@ struct AddProductsScreen: View {
     }
 
     private var noPermissionsPlaceholder: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: Constants.Spacing.spacing200) {
             Text("It seems you have denied the access to the camera! We cannot scan the products without it!")
             if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
                 Button("Open Settings to allow camera access!") {
