@@ -2,26 +2,34 @@ from flask import jsonify, abort, request
 from config import db
 from models import Product, product_schema, products_schema
 
-def read_products():
+def get_all():
     products = Product.query.all()
     print(products)
     return jsonify(products_schema.dump(products))
 
-def read_product(EAN):
+def get_by_EAN(EAN):
     product = Product.query.filter(Product.EAN == EAN).one_or_none()
 
-    if product is not None:
-        return jsonify(product_schema.dump(product))
-    else:
-        abort(404, f"Product with EAN '{EAN}' not found")
+    if product is None:
+        abort(404, f"Product with EAN '{EAN}' not found.")
+
+    return jsonify(product_schema.dump(product))
+
+def get_by_name(name):
+    product = Product.query.filter(Product.name == name).one_or_none()
+
+    if product is None:
+        abort(404, f"Product with name '{name}' not found.")
+
+    return jsonify(product_schema.dump(product))
 
 def add_product():
     EAN = request.get_json()["EAN"]
 
     try:
         new_product = Product(EAN)
-    except ValueError:
-        abort(400, f"Invalid EAN '{EAN}'. Should be 13 digits long.")
+    except ValueError as err:
+        abort(400, str(err))
 
     db.session.add(new_product)
     db.session.commit()

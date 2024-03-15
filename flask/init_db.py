@@ -18,6 +18,7 @@ def main():
         "brand VARCHAR",
         "category VARCHAR",
         "image_url VARCHAR",
+        "size VARCHAR",
         "CHECK(LENGTH(EAN) == 13)"
     ]
 

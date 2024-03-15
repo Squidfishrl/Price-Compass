@@ -24,6 +24,8 @@ components:
           type: "string"
         image:
           type: "string"
+        size:
+          type: "string"
 
   parameters:
     EAN:
@@ -33,11 +35,18 @@ components:
       required: True
       schema:
         type: "string"
+    name:
+      name: "name"
+      description: "The name of a product. Is unique."
+      in: path
+      required: True
+      schema:
+        type: "string"
 
 paths:
   /products:
     get:
-      operationId: "products.read_products"
+      operationId: "products.get_all"
       tags:
         - "Products"
       summary: "Get all products"
@@ -65,7 +74,7 @@ paths:
           description: "Successfully added a product"
   /products/{EAN}:
     get:
-      operationId: "products.read_product"
+      operationId: "products.get_by_EAN"
       tags:
         - "Products"
       summary: "Get product information based on its EAN"
@@ -74,3 +83,14 @@ paths:
       responses:
         "200":
           description: "Successfully read product"
+  /products/{name}:
+    get:
+      operationId: "products.get_by_name"
+      tags:
+        - "Products"
+      summary: "Get product information by its name"
+      parameters:
+        - $ref: "#/components/parameters/name"
+      responses:
+        "200":
+          description: "Successfully found product"
