@@ -92,14 +92,38 @@ paths:
           application/json:
             schema:
               x-body-name: "Product EAN"
-              type: "object"
-              properties:
-                EAN:
-                  type: "string"
+              type: "array"
+              items:
+                type: "object"
+                properties:
+                  EAN:
+                    type: "string"
       responses:
         "201":
           description: "Successfully added a product"
-  /products/{EAN}:
+  /product/{EAN}:
+    get:
+      operationId: "endpoints.products.get_by_EAN"
+      tags:
+        - "Products"
+      summary: "Get product information based on its EAN"
+      parameters:
+        - $ref: "#/components/parameters/EAN"
+      responses:
+        "200":
+          description: "Successfully read product"
+  /product_meta/{EAN}:
+    get:
+      operationId: "endpoints.products.find_info_by_EAN"
+      tags:
+        - "Products"
+      summary: "Get product information based on its EAN"
+      parameters:
+        - $ref: "#/components/parameters/EAN"
+      responses:
+        "200":
+          description: "Successfully read product"
+  /product/{EAN}:
     get:
       operationId: "endpoints.products.get_by_EAN"
       tags:
