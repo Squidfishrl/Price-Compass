@@ -27,7 +27,7 @@ final class ProductsProvider: ProductsProvidable {
     }()
 
     func getProduct(with ean: String) async throws -> ProductDto {
-        guard let request = URL(string: "\(baseUrl)/product/\(ean)") else {
+        guard let request = URL(string: "\(baseUrl)/product_meta/\(ean)") else {
             throw BadUrlError()
         }
         let (data, _) = try await URLSession.shared.data(from: request)
