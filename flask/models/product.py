@@ -2,20 +2,21 @@ import barcodenumber
 import os
 import requests
 
-from sqlalchemy import CheckConstraint
 from config import serializer, db
 
 class Product(db.Model):
     __tablename__ = "product"
-    EAN = db.Column(db.String(13), primary_key = True)
-    name = db.Column(db.String(128), unique = True)
+    EAN = db.Column(db.String(13), primary_key=True, nullable=False)
+    name = db.Column(db.String(128), unique=True, nullable=False)
     brand = db.Column(db.String(128))
     category = db.Column(db.String(128))
     image_url = db.Column(db.String(1024))
     size = db.Column(db.String(32))
 
-    def __init__(self, EAN):
-        # TODO: Use API
+    @classmethod
+    def create(cls, EAN):
+        self = cls()
+
         self.EAN = str(EAN)
 
         if not barcodenumber.check_code_ean13(EAN):
@@ -40,6 +41,8 @@ class Product(db.Model):
         self.image_url = response.get("product").get("images")[0]
         self.size = response.get("product").get("attributes").get("size")
 
+        return self 
+    
 class ProductSchema(serializer.SQLAlchemyAutoSchema):
     class Meta:
         model = Product
