@@ -35,8 +35,8 @@ class Product(db.Model):
         headers[api_host_header] = api_host
 
         response = requests.get(url, headers=headers, params=query).json()
-        if response == []:
-            raise  LookupError(f"API doesn't know about EAN '{EAN}'")
+        if response == [] or response.get("product") is None:
+            raise  LookupError(f"API doesn't know about product with EAN '{EAN}'")
 
         self.name = response.get("product").get("title")
         self.brand = response.get("product").get("brand")
