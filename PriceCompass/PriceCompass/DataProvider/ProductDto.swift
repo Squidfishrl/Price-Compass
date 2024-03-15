@@ -8,12 +8,12 @@
 import Foundation
 
 struct ProductDto: Codable {
-    let ean: String
-    let brand: String
+    let ean13: String
+    let brand: String?
     let name: String
     let category: String?
     let imageUrl: String
-    let stores: [String: ProductPriceDto]?
+    let stores: [String: [ProductPriceDto]]?
 }
 
 struct ProductPriceDto: Codable {

@@ -12,8 +12,9 @@ struct ProductImage: View {
     private(set) var size = 50.0
 
     var body: some View {
-        AsyncImage(url: URL(string: imageUrl))
+        AsyncImage(url: URL(string: imageUrl), scale: 3)
             .frame(width: size, height: size)
+            .scaledToFit()
             .clipShape(RoundedRectangle(cornerRadius: Constants.Size.cornerRadiusMedium))
     }
 }
