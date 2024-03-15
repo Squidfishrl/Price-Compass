@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeScreen: View {
     @EnvironmentObject private var productsRepository: ProductsManager
     @State private var searchQuery = ""
-    @Binding private(set) var products: [ProductModel]
+    @State private var products: [ProductModel] = []
 
     var body: some View {
         List {
@@ -28,5 +28,5 @@ struct HomeScreen: View {
 }
 
 #Preview {
-    HomeScreen(products: .constant([]))
+    HomeScreen()
 }

@@ -26,7 +26,7 @@ final class ProductsManager: ProductsRepository, ObservableObject {
             return ProductModel(id: productMetadata.ean,
                                 brand: productMetadata.brand,
                                 name: productMetadata.name,
-                                category: productMetadata.category,
+                                category: productMetadata.category ?? "No category",
                                 imageUrl: productMetadata.imageUrl,
                                 prices: [])
         } catch {
@@ -43,7 +43,7 @@ final class ProductsManager: ProductsRepository, ObservableObject {
                 return ProductModel(id: productData.ean,
                                     brand: productData.brand,
                                     name: productData.name,
-                                    category: productData.category,
+                                    category: productData.category ?? "No category",
                                     imageUrl: productData.imageUrl,
                                     prices: prices)
             }

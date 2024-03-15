@@ -11,7 +11,7 @@ struct ProductDto: Codable {
     let ean: String
     let brand: String
     let name: String
-    let category: String
+    let category: String?
     let imageUrl: String
     let stores: [String: ProductPriceDto]?
 }
