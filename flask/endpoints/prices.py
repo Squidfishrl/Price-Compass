@@ -4,21 +4,10 @@ from config import db
 from models.price import Price, price_schema, prices_schema
 from models.store import Store
 
+
 def get_all():
     prices = Price.query.all()
     
-    # for price in prices:
-    #     product = Product.query.filter(Product.EAN == price.productEAN).one_or_none()
-    #
-    #     if product is None:
-    #         return abort(404)
-    #
-    #     price.brand = product.brand
-    #     price.name = product.brand
-    #     price.category = product.category
-    #     price.image_url = product.image_url
-    #     return price.jsonify()
-
     return jsonify(prices_schema.dump(prices))
 
 def add_price():

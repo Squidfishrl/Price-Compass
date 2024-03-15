@@ -1,28 +1,46 @@
-from flask import jsonify, abort, request
+from dataclasses import dataclass
+import json
+
+from flask import Response, jsonify, abort, request
 from config import db
-from models.product import Product, product_schema, products_schema
+from models.product import Product, product_schema
 from models.price import Price
 from sqlalchemy import select
 
-class ProductPrices():
-    pass
+@dataclass
+class ProductPrices:
+    ean13: str
+    brand: str|None
+    name: str
+    category: str|None
+    imageUrl: str|None
+    stores: dict[str, list[dict[str, float|str]]] 
 
 def get_all():
     products = Product.query.all()
+    product_infos = []
 
     for product in products:
         result = db.session.execute(select(Price.store_name, Price.price, Price.date)\
                 .where(Price.product_EAN == product.EAN))
 
-        store_names = {}
+        stores = {}
         for res in result.all():
-            if store_names.get(res[0]) is None:
-                store
+            store_names = res[0]
+            if stores.get(store_names) is None:
+                stores[store_names] = []
 
+            stores[store_names].append({"price" : res[1], "date" : str(res[2])})
 
-    return jsonify(products_schema.dump(products))
+            product_info = ProductPrices(ean13=product.EAN, brand=product.brand,
+                          name=product.name, category=product.category,
+                          imageUrl=product.image_url, stores=stores)
 
-def get_by_EAN(EAN):
+            product_infos.append(product_info.__dict__)
+
+    return Response(json.dumps(product_infos),  mimetype='application/json')
+
+def get_by_EAN(EAN: str):
     product = Product.query.filter(Product.EAN == EAN).one_or_none()
 
     if product is None:
@@ -30,7 +48,7 @@ def get_by_EAN(EAN):
 
     return jsonify(product_schema.dump(product))
 
-def get_by_name(name):
+def get_by_name(name: str):
     product = Product.query.filter(Product.name == name).one_or_none()
 
     if product is None:
