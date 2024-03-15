@@ -9,12 +9,28 @@ resetZoomButton.addEventListener('click', () => {
 });
 
 
+let minPrices = [];
+let maxPrices = [];
+
+function calcPricesForAll() {
+	let allDataPoints = Object.values(stores).flatMap(store => store.map(details => details));
+	let dates = new Set();
+	allDataPoints.forEach(dp => dates.add(new Date(dp.date).toDateString()));
+	minPrices = [];
+	maxPrices = [];
+	let pricesForDate;
+	dates.forEach(d => {
+		pricesForDate = allDataPoints.flatMap(dp => (new Date(dp.date).toDateString() === d) ? [dp.price] : []);
+		minPrices.push(Math.min(...pricesForDate));
+		maxPrices.push(Math.max(...pricesForDate));
+	});
+}
+
 let select = document.querySelector('#store > select');
 select.addEventListener('change', () => {
 	let curr = select.options[select.selectedIndex].value;
 	// console.log(priceChart.data.datasets[0].data);
 	if (curr !== 'All') {
-		// priceChart.data.datasets[0].data = prices[curr].map(obj => obj.price);
 		priceChart.config.data.datasets = [
 			{
 				label: "Цена",
@@ -24,19 +40,20 @@ select.addEventListener('change', () => {
 			}
 		]
 	} else {
-		let allDataPoints = Object.values(stores).flatMap(store => store.map(details => details));
+		calcPricesForAll();
+
 		priceChart.config.data.datasets = [
 			{
-				label: "макс. цена",
-				data: stores['Lidl'].map(obj => obj.price),
+				label: "Макс. цена",
+				data: maxPrices,
 				borderWidth: 1,
 				backgroundColor: 'rgb(200, 0, 0)',
 				borderColor: 'rgb(150, 0, 0)',
 				tension: 0.2
 			},
 			{
-				label: "мин. цена",
-				data: stores['Billa'].map(obj => obj.price),
+				label: "Мин. цена",
+				data: minPrices,
 				borderWidth: 1,
 				backgroundColor: 'rgb(0, 200, 0)',
 				borderColor: 'rgb(0, 150, 0)',
@@ -47,7 +64,7 @@ select.addEventListener('change', () => {
 	priceChart.update();
 });
 
-
+calcPricesForAll();
 let priceChart = new Chart(ctx, {
 	type: 'line',
 	data: {
@@ -55,7 +72,7 @@ let priceChart = new Chart(ctx, {
 		datasets: [
 			{
 				label: "макс. цена",
-				data: stores['Lidl'].map(obj => obj.price),
+				data: minPrices, // [3.70, 3.70, 3.79, 3.79, 3.79, 3.79, 3.75, 3.75, 3.75, 3.75, 3.75, 3.70],
 				borderWidth: 1,
 				backgroundColor: 'rgb(200, 0, 0)',
 				borderColor: 'rgb(150, 0, 0)',
@@ -63,7 +80,7 @@ let priceChart = new Chart(ctx, {
 			},
 			{
 				label: "мин. цена",
-				data: stores['Billa'].map(obj => obj.price),
+				data: maxPrices, // [3.45, 3.40, 3.40, 3.40, 3.40, 3.40, 3.20, 3.20, 3.20, 3.30, 3.30, 3.30],
 				borderWidth: 1,
 				backgroundColor: 'rgb(0, 200, 0)',
 				borderColor: 'rgb(0, 150, 0)',
