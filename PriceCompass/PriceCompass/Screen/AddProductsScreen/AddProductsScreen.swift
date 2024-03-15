@@ -10,9 +10,13 @@ import CodeScanner
 import AVFoundation
 
 struct AddProductsScreen: View {
+    @Environment(\.dismiss) private var dismiss
     @State private var showErrorAlert = false
     @State private var showScanner = false
-    @State private var data: [String] = []
+    @State private var products: [ProductModel] = [ProductModel(brand: "brand", name: "name", category: "category", imageUrl: "", prices: [])]
+    @State private var prices: [String] = [""]
+    @State private var storeName = ""
+    private let productsUploadDate: Date = .now
 
     var body: some View {
         if [.authorized, .notDetermined].contains(cameraAccess) {
@@ -23,14 +27,44 @@ struct AddProductsScreen: View {
     }
 
     private var content: some View {
-        List {
-            ForEach(data, id: \.self) { data in
-                Text(data)
+        VStack {
+            List {
+                ForEach(products.indices, id: \.self) { index in
+                    HStack {
+                        ProductListItem(product: products[index])
+                        Spacer()
+                        TextField("Price", text: $prices[index])
+                            .keyboardType(.numbersAndPunctuation)
+                            .multilineTextAlignment(.trailing)
+                            .frame(maxWidth: 60)
+                            .padding([.horizontal, .vertical], 8)
+                            .background {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke()
+                                    .foregroundStyle(.secondary)
+                            }
+                    }
+                }
+                .onDelete { indexSet in
+                    products.remove(atOffsets: indexSet)
+                }
             }
-            .onDelete { indexSet in
-                data.remove(atOffsets: indexSet)
+            HStack(spacing: 40) {
+                TextField("Store", text: $storeName)
+                    .padding([.horizontal, .vertical], 8)
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke()
+                            .foregroundStyle(.secondary)
+                    }
+                ActionButton(text: "Submit") {
+                    // TODO: map prices and call post endpoint
+                    dismiss()
+                }
             }
+            .padding(.horizontal, 24)
         }
+        .padding(.bottom, 8)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button {
@@ -43,8 +77,8 @@ struct AddProductsScreen: View {
         .sheet(isPresented: $showScanner) {
             CodeScannerView(codeTypes: [.ean13, .qr]) { result in
                 if case let .success(success) = result {
-                    if success.string.isEmpty { return }
-                    data.append(success.string)
+                    products.append(product(from: success.string))
+                    prices.append("0")
                 } else {
                     showErrorAlert = true
                 }
@@ -53,6 +87,8 @@ struct AddProductsScreen: View {
             .scaledToFill()
         }
         .alert("There was a problem with the scanning process...", isPresented: $showErrorAlert) {}
+        .navigationTitle("Add Products")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private var noPermissionsPlaceholder: some View {
@@ -70,16 +106,14 @@ struct AddProductsScreen: View {
     private var cameraAccess: AVAuthorizationStatus {
         AVCaptureDevice.authorizationStatus(for: .video)
     }
+
+    private func product(from ean: String) -> ProductModel {
+        ProductModel(brand: "", name: "", category: "", imageUrl: "", prices: [])
+    }
 }
 
 #Preview {
     NavigationStack {
         AddProductsScreen()
-    }
-}
-
-extension AVMediaType: CaseIterable {
-    static public var allCases: [AVMediaType] {
-        [.audio, .metadataObject, .video]
     }
 }
