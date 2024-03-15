@@ -1,8 +1,8 @@
 import config
+import json
 
 from flask import render_template, url_for
 from dotenv import load_dotenv
-import json
 
 app = config.connex_app
 app.add_api(config.basedir / "./swagger.yml")
