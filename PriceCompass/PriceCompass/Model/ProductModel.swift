@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ProductModel: Identifiable {
+struct ProductModel: Identifiable, Hashable {
     let id = UUID()
     let brand: String
     let name: String
@@ -16,7 +16,7 @@ struct ProductModel: Identifiable {
     let prices: [ProductPrice]
 }
 
-struct ProductPrice: Identifiable {
+struct ProductPrice: Identifiable, Hashable {
     let id = UUID()
     let store: String
     let price: Double

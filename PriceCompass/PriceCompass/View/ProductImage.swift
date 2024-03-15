@@ -9,10 +9,11 @@ import SwiftUI
 
 struct ProductImage: View {
     let imageUrl: String
+    private(set) var size = 50.0
 
     var body: some View {
         AsyncImage(url: URL(string: imageUrl))
-            .frame(width: 50, height: 50)
+            .frame(width: size, height: size)
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

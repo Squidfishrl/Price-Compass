@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct HomeScreen: View {
-    @EnvironmentObject private var navigationRoute: NavigationRoute
     @State private var searchQuery = ""
     @Binding private(set) var products: [ProductModel]
 
     var body: some View {
         List {
             ForEach(products) { product in
-                ProductListItem(product: product)
-                    .onTapGesture {
-                        navigationRoute.path.append(.details)
-                    }
+                NavigationLink(value: NavigationRoute.Destination.details(product: product)) {
+                    ProductListItem(product: product)
+                }
             }
         }
         .searchable(text: $searchQuery)
