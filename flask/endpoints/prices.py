@@ -11,19 +11,26 @@ def get_all():
     return jsonify(prices_schema.dump(prices))
 
 def add_price():
-    price_info = request.get_json()
-    price_entry = Price()
-    store = Store.query.filter(price_info["store_name"] == Store.name)\
+    prices_info = request.get_json()
+    price_entries = []
+    for price_info in prices_info:
+        price_entry = Price()
+        store = Store.query.filter(price_info["store_name"] == Store.name)\
                                     .one_or_none()
-    if store is None:
-        abort(400, f"Store with name {price_info['store_name']} doesn't exist")
+        if store is None:
+            abort(400, f"Store with name {price_info['store_name']} doesn't exist")
 
-    price_entry.product_EAN = price_info["product_EAN"]
-    price_entry.price = price_info["price"]
-    price_entry.store_name = store.name
-    price_entry.date = datetime.now()
+        price_entry.product_EAN = price_info["product_EAN"]
+        price_entry.price = price_info["price"]
+        price_entry.store_name = store.name
+        price_entry.date = datetime.now()
 
-    db.session.add(price_entry)
+        db.session.add(price_entry)
+        price_entries.append(price_entry)
+
     db.session.commit()
-    return (price_schema.jsonify(price_entry), 201)
+
+    return (price_schema.jsonify(price_entries), 201)
+    # return Response(json.dumps(product_infos),  mimetype='application/json')
+    return Response(json.dumps(product_infos),  mimetype='application/json')
 
