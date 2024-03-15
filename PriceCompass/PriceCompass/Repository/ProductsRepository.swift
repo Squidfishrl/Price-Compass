@@ -23,8 +23,8 @@ final class ProductsManager: ProductsRepository, ObservableObject {
     func getProduct(with ean: String) async throws -> ProductModel {
         do {
             let productMetadata = try await productsProvider.getProduct(with: ean)
-            return ProductModel(id: productMetadata.ean,
-                                brand: productMetadata.brand,
+            return ProductModel(id: productMetadata.ean13,
+                                brand: productMetadata.brand ?? "No brand",
                                 name: productMetadata.name,
                                 category: productMetadata.category ?? "No category",
                                 imageUrl: productMetadata.imageUrl,
@@ -37,11 +37,14 @@ final class ProductsManager: ProductsRepository, ObservableObject {
     func getProducts() async throws -> [ProductModel] {
         do {
             return try await productsProvider.getProducts().map { productData in
-                let prices = (productData.stores ?? [:]).map { store, priceInfo in
-                    ProductPrice(store: store, price: priceInfo.price, date: priceInfo.date)
+                var prices: [ProductPrice] = []
+                for (store, priceEntries) in productData.stores ?? [:] {
+                    priceEntries.forEach { priceInfo in
+                        prices.append(ProductPrice(store: store, price: priceInfo.price, date: priceInfo.date))
+                    }
                 }
-                return ProductModel(id: productData.ean,
-                                    brand: productData.brand,
+                return ProductModel(id: productData.ean13,
+                                    brand: productData.brand ?? "No brand",
                                     name: productData.name,
                                     category: productData.category ?? "No category",
                                     imageUrl: productData.imageUrl,

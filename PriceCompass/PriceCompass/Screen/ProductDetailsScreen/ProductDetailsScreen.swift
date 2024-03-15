@@ -51,7 +51,7 @@ struct ProductDetailsScreen: View {
         let (date, prices) = data
         return Section(date) {
             ForEach(prices) { details in
-                NavigationLink(value: NavigationRoute.Destination.analytics(url: "")) {
+                NavigationLink(value: NavigationRoute.Destination.analytics(for: product.id)) {
                     HStack {
                         Text(details.store)
                         Spacer()

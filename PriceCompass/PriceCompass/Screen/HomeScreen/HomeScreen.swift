@@ -22,7 +22,11 @@ struct HomeScreen: View {
         }
         .searchable(text: $searchQuery)
         .task {
-            products = (try? await productsRepository.getProducts()) ?? []
+            do {
+                products = try await productsRepository.getProducts()
+            } catch {
+                print(error)
+            }
         }
     }
 }
