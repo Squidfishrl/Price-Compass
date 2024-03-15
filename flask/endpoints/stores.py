@@ -6,8 +6,9 @@ def get_all():
     stores = Store.query.all()
     return jsonify(stores_schema.dump(stores))
 
-def add_store():
-    name = request.get_json()["name"]
+def add_store(name=None):
+    if name is None:
+        name = request.get_json()["name"]
 
     existing_store = Store.query.filter(Store.name == name).one_or_none()
     if existing_store is not None:

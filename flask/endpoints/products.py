@@ -55,7 +55,7 @@ def get_by_EAN(EAN: str):
         if stores.get(store_names) is None:
             stores[store_names] = []
 
-        stores[store_names].append({"price" : res[1], "date" : str(res[2])})
+        stores[store_names].append({"price" : res[1], "date" : res[2].isoformat()})
 
     product_info = ProductPrices(ean13=product.EAN, brand=product.brand,
                                  name=product.name, category=product.category,
@@ -67,8 +67,11 @@ def find_info_by_EAN(EAN: str):
     product = Product.query.filter(Product.EAN == EAN).one_or_none()
 
     if product is None:
-        product = Product.create(EAN)
-        add_product([product])
+        try:
+            return add_product([EAN])
+        except LookupError as e:
+            abort(404, str(e))
+
         
     return jsonify(product_schema.dump(product))
 
