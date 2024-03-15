@@ -61,7 +61,7 @@ def get_by_EAN(EAN: str):
                                  name=product.name, category=product.category,
                                  imageUrl=product.image_url, stores=stores)
 
-    return Response(json.dumps(product_info.__dict__),  mimetype='application/json')
+    return jsonify(product_info)
 
 def get_by_name(name: str):
     product = Product.query.filter(Product.name == name).one_or_none()
