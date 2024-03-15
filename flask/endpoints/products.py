@@ -63,6 +63,15 @@ def get_by_EAN(EAN: str):
 
     return jsonify(product_info)
 
+def find_info_by_EAN(EAN: str):
+    product = Product.query.filter(Product.EAN == EAN).one_or_none()
+
+    if product is None:
+        product = Product.create(EAN)
+        add_product([product])
+        
+    return jsonify(product_schema.dump(product))
+
 def get_by_name(name: str):
     product = Product.query.filter(Product.name == name).one_or_none()
 
@@ -71,18 +80,21 @@ def get_by_name(name: str):
 
     return jsonify(product_schema.dump(product))
 
-def add_product():
-    EAN = request.get_json()["EAN"]
+def add_product(EANs=None):
+    if EANs is None: # is called from request 
+        EANs = request.get_json()["EAN"]
 
-    existing_product = Product.query.filter(Product.EAN == EAN).one_or_none()
-    if existing_product is not None:
-        abort(409, f"Product with EAN 'f{EAN}'already exists")
+    for EAN in EANs:
 
-    try:
-        new_product = Product.create(EAN)
-    except ValueError as err:
-        abort(400, str(err))
+        existing_product = Product.query.filter(Product.EAN == EAN).one_or_none()
+        if existing_product is not None:
+            abort(409, f"Product with EAN 'f{EAN}'already exists")
 
-    db.session.add(new_product)
-    db.session.commit()
-    return (product_schema.jsonify(new_product), 201)
+        try:
+            new_product = Product.create(EAN)
+        except ValueError as err:
+            abort(400, str(err))
+
+        db.session.add(new_product)
+        db.session.commit()
+        return (product_schema.jsonify(new_product), 201)
