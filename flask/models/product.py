@@ -28,11 +28,9 @@ class Product(db.Model):
         api_host_header = str(os.getenv("API_HOST_HEADER"))
         url = str(os.getenv("URL"))
 
-        query = {}
-        query["query"] = EAN
-        headers = {}
-        headers[api_key_header] = api_key
-        headers[api_host_header] = api_host
+        query = {"query" : EAN}
+        headers = {api_key_header : api_key,
+                   api_host_header : api_host}
 
         response = requests.get(url, headers=headers, params=query).json()
         if response == [] or response.get("product") is None:

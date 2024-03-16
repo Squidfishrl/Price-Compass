@@ -117,7 +117,7 @@ paths:
       operationId: "endpoints.products.find_info_by_EAN"
       tags:
         - "Products"
-      summary: "Get product information based on its EAN"
+      summary: "Get product information based on its EAN. If product doesn't exist but EAN is valid, fetch product information and add it to db"
       parameters:
         - $ref: "#/components/parameters/EAN"
       responses:
